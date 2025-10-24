@@ -1,6 +1,6 @@
 body {
     background-size: cover;
-    background-image: url("https://images.pexels.com/photos/11198232/pexels-photo-11198232.jpeg");
+    background-image: url(taustakuva.jpeg);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -53,15 +53,16 @@ table {
 td.l {
     width: 40%;
     text-align: left;
-    background-color: rgba(219, 219, 219, 0.175);
 }
 td.r {
     width: 40%;
     text-align: right;
-    background-color: rgba(219, 219, 219, 0.175);
 }
 h3 {
     letter-spacing: 1.5px;
     color: rgba(0, 0, 0, 0.632);
     font-weight: bold;
+}
+img.x {
+    width: 100%;
 }
