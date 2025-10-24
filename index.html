@@ -14,16 +14,30 @@
             background-attachment: fixed;
         }
         div.card {
-            display: grid;
             grid-template-columns: minmax(100px, 1fr);
-            background-color: red;
-            height: 100%;
-        }
-        .nappi{
-            border-radius: 20px;
+            height: auto;
+            border-radius: 10px;
             backdrop-filter: blur(8px);
             background-color: rgba(219, 219, 219, 0.175);
-
+        }
+        #content {
+            display: grid;
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+            background-color: rgba(219, 219, 219, 0.175);
+        }
+        .nappi{
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+            background-color: rgba(219, 219, 219, 0.175);
+            height: 50px;
+            margin: auto;
+            align-self: center;
+            width: 49.4%;
+        }
+        h3 {
+            letter-spacing: 1.5px;
+            color: rgba(0, 0, 0, 0.632);
         }
         
     </style>
@@ -31,42 +45,83 @@
 <body>
     <!--Sisältö-->
     <div class="master">
-        <div class="card" id="sisältö">
-            <button class="nappi" onclick="näytä(); laske(); tulokset(); ohjeet();"></button>
-            <button class="nappi" onclick="nollaa();"></button>
+        <div class="card">
+            <button class="nappi" onclick="näytä(); laske(); tulokset(); ohjeet();"><h3>Laske</h3></button>
+            <button class="nappi" onclick="nollaa();"><h3>Nollaa</h3></button>
+        </div>
+        <br>
+        <!--Inputit-->
+        <div class="card">
+            <table>
+                <tr>
+                    <td>Hengitystaajuus</td>
+                    <td><input type="text" id="hf"></td>
+                </tr>
+                <tr>
+                    <td>Happisaturaatio</td>
+                    <td><input type="text" id="spo2"></td>
+                </tr>
+                <tr>
+                    <td>Lisähappi käytössä?</td>
+                    <td><input type="checkbox" id="addito2"></td>
+                </tr>
+                <tr>
+                    <td>Verenpaine </td>
+                    <td><input type="text" id="rrsys">/<input type="text" id="rrdia"></td>
+                </tr>                
+                <tr>
+                    <td>Syke</td>
+                    <td><input type="text" id="syke"></td>
+                </tr>
+                <tr>
+                    <td>Alentunut tajunnantaso?</td>
+                    <td><input type="checkbox" id="taj"></td>
+                </tr>
+                <tr>
+                    <td>Lämpö</td>
+                    <td><input type="text" id="temp"></td>
+                </tr>
+            </table>
         </div>
 
+        <br>
+
+        <!--Tulokset ja ohjeet:-->
+        <div class="card" id="content">
+            <h2 id="pisteet"></h2>
+            <br>
+            <h3 id="ohjeotsikko"></h3>
+            <h4 id="ohje1"></h4>
+            <h4 id="ohje2"></h4>
+        </div>
+        <div class="card">
+            <h3 id="potvit"></h3>
+            <br>
+
+        </div>
     </div>
     
 </body>
 <footer>
     <script>
-        const näkyy = false
-        x = document.getElementById("sisältö")
         function nollaa() {
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            }
+            const x = document.getElementById("content");
+            x.style.display = "none";
         }
         function näytä() {
-            näkyy = true
-            x = document.getElementById("sisältö")
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                /// why are you here
-            }
-
+            const x = document.getElementById("content");
+            x.style.display = "grid";
+            /// Tulikkonää kattellemmaan mun tihirusteluja
         }
         function laske() {
-            const hf = document.getElementById("hfinput");
-            const spo2 = document.getElementById("spo2input");
-            const addito2 = document.getElementById("addito2input");
-            const rrsys = document.getElementById("rrsysinput");
-            const rrdia = document.getElementById("rrdiainput");
-            const syke = document.getElementById("sykeinput");
-            const taj = document.getElementById("tajinput");
-            const temp = document.getElementById("tempinput");
+            hf = document.getElementById("hf").value;
+            spo2 = document.getElementById("spo2").value;
+            addito2 = document.getElementById("addito2").checked;
+            rrsys = document.getElementById("rrsys").value;
+            rrdia = document.getElementById("rrdia").value;
+            syke = document.getElementById("syke").value;
+            taj = document.getElementById("taj").checked;
+            temp = document.getElementById("temp").value;
 
             pisteet = 0;
 
@@ -76,7 +131,7 @@
 
             if (range(hf, 12, 20)) {
                 pisteet = pisteet + 0
-                omahf = 0    
+                omahf = 0
             } else if  (range(hf, 9, 11)) {
                 pisteet = pisteet + 1
                 omahf = 1
@@ -110,12 +165,9 @@
             }
 
 
-            if (addito2 === "k" || addito2 === "K") {
+            if (addito2.checked) {
                 pisteet = pisteet + 2
                 omaaddito2 = 2
-            } else if (addito2 === "e" || addito2 === "E") {
-                pisteet = pisteet + 0
-                omaaddito2 = 0
             }
 
 
@@ -158,12 +210,9 @@
             }
 
 
-            if (taj === "N" || taj === "n") {
-                pisteet = pisteet + 0
-                omataj = 0
-            } else if (taj === "P" || taj === "p") {
+            if (taj.checked) {
                 pisteet = pisteet + 3
-                omataj = 3
+                omataj = 0
             }
 
 
@@ -184,7 +233,7 @@
                 omatemp = 2
             }
 
-            var totOma = omatemp + omataj + omasyke + omarrsys + omaaddito2 + omaspo2 + omahf
+            /*var totOma = omatemp + omataj + omasyke + omarrsys + omaaddito2 + omaspo2 + omahf*/
 
 
             document.getElementById("pisteet").innerHTML = pisteet
