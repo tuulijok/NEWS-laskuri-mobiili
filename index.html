@@ -4,107 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEWS-laskuri</title>
-
-    <style>
-        body {
-            background-size: cover;
-            background-image: url("https://images.pexels.com/photos/11198232/pexels-photo-11198232.jpeg");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        div.card {
-            grid-template-columns: minmax(100px, 1fr);
-            height: auto;
-            border-radius: 10px;
-            backdrop-filter: blur(8px);
-            background-color: rgba(219, 219, 219, 0.175);
-        }
-        #content {
-            
-            display: grid;
-            /**
-            border-radius: 10px;
-            backdrop-filter: blur(8px);
-            background-color: rgba(219, 219, 219, 0.175); **/
-        }
-        .nappi{
-            border-radius: 10px;
-            backdrop-filter: blur(8px);
-            background-color: rgba(219, 219, 219, 0.175);
-            height: 50px;
-            margin: auto;
-            align-self: center;
-            width: 49.4%;
-        }
-        input[type=text], select {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        h3 {
-            letter-spacing: 1.5px;
-            color: rgba(0, 0, 0, 0.632);
-        }
-        
-    </style>
+    <link rel="stylesheet" href="tyylit.css">
+    <script type="text/javascript" src="scriptit.js"></script>
 </head>
-<body>
+<body onload="nollaa();">
     <!--Sisältö-->
     <div class="master">
-        <div class="card">
-            <button class="nappi" onclick="näytä(); laske(); ohjeet();"><h3>Laske</h3></button>
-            <button class="nappi" onclick="nollaa();"><h3>Nollaa</h3></button>
-        </div>
-        <br>
         <!--Inputit-->
         <div class="card">
+            <center>
+                <h2>NEWS-pistelaskuri</h2>
+            </center>
             <table>
                 <tr>
-                    <td>Hengitystaajuus</td>
-                    <td><input type="number" id="hf" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td class="l"><h4>Hengitystaajuus:</h4></td>
+                    <td class="r"><input class="text" type="number" id="hf" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
-                    <td>Happisaturaatio</td>
-                    <td><input type="number" id="spo2" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td class="l"><h4>Happisaturaatio:</h4></td>
+                    <td class="r"><input class="text" type="number" id="spo2" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
-                    <td>Lisähappi käytössä?</td>
-                    <td><input type="checkbox" id="addito2" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td class="l"><h4>Lisähappi käytössä?</h4></td>
+                    <td class="r"><input type="checkbox" id="addito2" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
-                    <td>Verenpaine </td>
-                    <td><input type="number" id="rrsys" pattern="[0-9]*" inputmode="numeric">/<input type="number" id="rrdia" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td class="l"><h4>Verenpaine:</h4> </td>
+                    <td class="r" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 28px; font-weight: 170;"><input class="text" type="number" id="rrsys" pattern="[0-9]*" inputmode="numeric">  /  <input class="text" type="number" id="rrdia" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>                
                 <tr>
-                    <td>Syke</td>
-                    <td><input type="number" id="syke" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td class="l"><h4>Syke:</h4></td>
+                    <td class="r"><input class="text" type="number" id="syke" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
-                    <td>Alentunut tajunnantaso?</td>
-                    <td><input type="checkbox" id="taj" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td class="l"><h4>Alentunut tajunnantaso?:</h4></td>
+                    <td class="r"><input type="checkbox" id="taj" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
-                    <td>Lämpö</td>
-                    <td><input type="number" id="temp" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td class="l"><h4>Lämpö:</h4></td>
+                    <td class="r"><input class="text" type="number" id="temp" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
             </table>
+            <div>
+                <button class="nappi" id="nappiteksti" onclick="painallus();"><h3>Laske</h3></button>
+            </div>
         </div>
 
         <br>
 
         <!--Tulokset ja ohjeet:-->
         <div id="content">
-            <div class="card" id="content">
-                <h2 id="pisteet"></h2>
+            <div class="card"> 
+                <center><h2 id="pisteetYht"></h2></center>
                 <br>
-                <h3 id="ohjeotsikko"></h3>
-                <h4 id="ohje1"></h4>
-                <h4 id="ohje2"></h4>
+                <div class="card">
+                    <h3 id="ohjeotsikko"></h3>
+                    <h4 id="ohje1"></h4>
+                    <h4 id="ohje2"></h4>
+                </div>
             </div>
         </div>
     </div>
@@ -112,191 +69,5 @@
     
 </body>
 <footer>
-    <script>
-        function nollaa() {
-            const x = document.getElementById("content");
-            x.style.display = "none";
-        }
-        function näytä() {
-            const x = document.getElementById("content");
-            x.style.display = "grid";
-            /// Tulikkonää kattellemmaan mun tihirusteluja
-        }
-        function laske() {
-            hf = document.getElementById("hf").value;
-            spo2 = document.getElementById("spo2").value;
-            addito2 = document.getElementById("addito2").checked;
-            rrsys = document.getElementById("rrsys").value;
-            rrdia = document.getElementById("rrdia").value;
-            syke = document.getElementById("syke").value;
-            taj = document.getElementById("taj").checked;
-            temp = document.getElementById("temp").value;
-
-            pisteet = 0;
-
-            function range(x, min, max) {
-                return x >= min && x <= max;
-            }
-
-            if (range(hf, 12, 20)) {
-                pisteet = pisteet + 0
-                omahf = 0
-            } else if  (range(hf, 9, 11)) {
-                pisteet = pisteet + 1
-                omahf = 1
-            } else if (hf <= 8) {
-                pisteet = pisteet + 3
-                omahf = 3
-            } else if (range(hf, 21, 24)){
-                pisteet = pisteet + 2    
-                omahf = 2
-            } else if (hf >= 25) {
-                pisteet = pisteet + 3
-                omahf = 3
-            } 
-
-
-            if (spo2 <= 91) {
-                pisteet = pisteet + 3
-
-                omaspo2 = 3
-            } else if (range(spo2, 92, 93)) {
-                pisteet = pisteet + 2
-
-                omaspo2 = 2
-            } else if (range(spo2, 94, 95)) {
-                pisteet = pisteet + 1
-
-                omaspo2 = 1
-            } else if (spo2 >= 96) {
-                pisteet = pisteet + 0
-                omaspo2 = 0
-            }
-
-
-            if (addito2.checked) {
-                pisteet = pisteet + 2
-                omaaddito2 = 2
-            }
-
-
-            if (rrsys <= 90) {
-                pisteet = pisteet + 3
-                omarrsys = 3
-            } else if (range(rrsys, 91, 100)) {
-                pisteet = pisteet + 2
-                omarrsys = 2
-            } else if (range(rrsys, 101, 110)) {
-                pisteet = pisteet + 1
-                omarrsys = 1
-            } else if (range(rrsys, 111, 219)) {
-                pisteet = pisteet + 0
-                omarrsys = 0
-            } else if (rrsys >= 220) {
-                pisteet = pisteet + 3
-                omarrsys = 3
-            }
-
-
-            if (syke <= 40) {
-                pisteet = pisteet + 3
-                omasyke = 3
-            } else if (range(syke, 41, 50)) {
-                pisteet = pisteet + 1
-                omasyke = 1
-            } else if (range(syke, 51, 90)) {
-                pisteet = pisteet + 0
-                omasyke = 0
-            } else if (range(syke, 91, 110)) {
-                pisteet = pisteet + 1
-                omasyke = 1
-            } else if (range(syke, 111, 130)) {
-                pisteet = pisteet + 2
-                omasyke = 2
-            } else if (syke >= 131) {
-                pisteet = pisteet + 3
-                omasyke = 3
-            }
-
-
-            if (taj.checked) {
-                pisteet = pisteet + 3
-                omataj = 0
-            }
-
-
-            if (temp <= 35.0) {
-                pisteet = pisteet + 3
-                omatemp = 3
-            } else if (range(temp, 35.1, 36.0)) {
-                pisteet = pisteet + 1
-                omatemp = 1
-            } else if (range(temp, 36.1, 38.0)) {
-                pisteet = pisteet + 0
-                omatemp = 0
-            } else if (range(temp, 38.1, 39.0)) {
-                pisteet = pisteet + 1
-                omatemp = 1
-            } else if (temp >= 39.1) {
-                pisteet = pisteet + 2
-                omatemp = 2
-            }
-
-            /*var totOma = omatemp + omataj + omasyke + omarrsys + omaaddito2 + omaspo2 + omahf*/
-
-
-            document.getElementById("pisteet").innerHTML = pisteet
-            
-            valmis = 1
-        }       
-
-    /// Ei käytössä tällä hetkellä
-    ///    function tulokset() {
-    ///        function range(x, min, max) {
-    ///            return x >= min && x <= max;
-    ///        }
-    ///        if (valmis === 1) {
-    ///            document.getElementById("potvit").innerText = "Vitaalit:"
-    ///            //document.getElementById("AB").innerHTML = "A + B"
-    ///            document.getElementById("hf").innerHTML = "Hengitysfrekvenssi: " + hf + "/min";
-    ///            document.getElementById("spo2").innerHTML = "Happisaturaatio: " + spo2 + " %";
-    ///            document.getElementById("addito2").innerHTML = "Lisähappi käytössä: " + addito2;
-    ///            //document.getElementById("C").innerHTML = "C"
-    ///            if (rrdia !== 0) {
-    ///                document.getElementById("RR").innerHTML = "Verenpaine: " + rrsys + "/" + rrdia + " mmhg";
-    ///            } else {
-    ///                document.getElementById("rrsys").innerHTML = "Sys. verenpaine: " + rrsys + " mmHg";
-    ///            }
-    ///            document.getElementById("syke").innerHTML = "Syke: " + syke;
-    ///            //document.getElementById("D").innerHTML = "D"
-    ///            document.getElementById("taj").innerHTML = "Tajunnantaso:" + taj; 
-    ///            //document.getElementById("E").innerHTML = "E"
-    ///         document.getElementById("temp").innerHTML = "Lämpö: " + temp + " °C";
-    ///        }
-    ///    } 
-    ///     
-        function ohjeet() {
-            function range(x, min, max) {
-                return x >= min && x <= max;
-            }
-            document.getElementById("ohjeotsikko").innerHTML = "Ohjeet:"
-                if (pisteet >= 7) {
-                    document.getElementById("ohje1").innerHTML = "TEE MET-HÄLYTYS!\n";
-                    document.getElementById("ohje2").innerHTML = "- Hälytä hoitava lääkäri!\n - Laske NEWS-pisteet 0-2 tunnin välein. Jatkuva seuranta.";
-
-                } else if (range(pisteet, 5, 6)) {
-                    document.getElementById("ohje1").innerHTML = " - Riskiluokka: Kohtalainen\n\n - Informoi muita hoitajia potilaan voinnin muutoksista.\n - Konsultoi lääkäriä jatkotoimista\n - Laske NEWS-pisteet vähintään 2-4 tunnin välein";
-                    document.getElementById("ohje2").innerHTML = " - Aloita tarvittaessa välittömät hoitotoimenpiteet!";
-
-                } else if (range(pisteet, 1, 4)) {
-                    document.getElementById("ohje1").innerHTML = " - Riskiluokka: Matala\n - Informoi muita hoitajia potilaan voinnin muutoksista.\n - Laske NEWS-pisteet vähintään 8 tunnin välein.";
-                    document.getElementById("ohje2").innerHTML = ""
-
-                } else if (pisteet === 0) {
-                    document.getElementById("ohje1").innerHTML = " - Riskiluokka: Matala\n\n - Laske NEWS-pisteet vähintään 12 tunnin välein."
-                    document.getElementById("ohje2").innerHTML = ""
-                }
-        }
-    </script>
 </footer>
 </html>

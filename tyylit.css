@@ -1,0 +1,67 @@
+body {
+    background-size: cover;
+    background-image: url("https://images.pexels.com/photos/11198232/pexels-photo-11198232.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    letter-spacing: 1.5px;
+    color: rgba(0, 0, 0, 0.753);
+    font-family: Arial, Helvetica, sans-serif;
+}
+div.card {
+    grid-template-columns: minmax(100px, 1fr);
+    height: auto;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    background-color: rgba(219, 219, 219, 0.175);
+    padding: 3%;
+}
+#content {
+    display: grid;
+    /**
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    background-color: rgba(219, 219, 219, 0.175); **/
+}
+.nappi{
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    background-color: rgba(219, 219, 219, 0.175);
+    height: 50px;
+    margin: auto;
+    align-self: center;
+    width: 100%;
+    border: 1px solid #535353;
+}
+input.text {
+    width: 50%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(8px);
+    background-color: rgba(219, 219, 219, 0.175);
+}
+#rrsys, #rrdia {
+    width: 60px;
+}
+table {
+    padding: 3%;
+}
+td.l {
+    width: 40%;
+    text-align: left;
+    background-color: rgba(219, 219, 219, 0.175);
+}
+td.r {
+    width: 40%;
+    text-align: right;
+    background-color: rgba(219, 219, 219, 0.175);
+}
+h3 {
+    letter-spacing: 1.5px;
+    color: rgba(0, 0, 0, 0.632);
+    font-weight: bold;
+}
