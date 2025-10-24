@@ -21,10 +21,12 @@
             background-color: rgba(219, 219, 219, 0.175);
         }
         #content {
+            
             display: grid;
+            /**
             border-radius: 10px;
             backdrop-filter: blur(8px);
-            background-color: rgba(219, 219, 219, 0.175);
+            background-color: rgba(219, 219, 219, 0.175); **/
         }
         .nappi{
             border-radius: 10px;
@@ -55,31 +57,31 @@
             <table>
                 <tr>
                     <td>Hengitystaajuus</td>
-                    <td><input type="number"" id="hf"></td>
+                    <td><input type="number"" id="hf" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
                     <td>Happisaturaatio</td>
-                    <td><input type="number"" id="spo2"></td>
+                    <td><input type="number"" id="spo2" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
                     <td>Lisähappi käytössä?</td>
-                    <td><input type="checkbox" id="addito2"></td>
+                    <td><input type="checkbox" id="addito2" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
                     <td>Verenpaine </td>
-                    <td><input type="number"" id="rrsys">/<input type="number"" id="rrdia"></td>
+                    <td><input type="number"" id="rrsys" pattern="[0-9]*" inputmode="numeric">/<input type="number" id="rrdia" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>                
                 <tr>
                     <td>Syke</td>
-                    <td><input type="number"" id="syke"></td>
+                    <td><input type="number"" id="syke" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
                     <td>Alentunut tajunnantaso?</td>
-                    <td><input type="checkbox" id="taj"></td>
+                    <td><input type="checkbox" id="taj" pattern="[0-9]*" inputmode="numeric""></td>
                 </tr>
                 <tr>
                     <td>Lämpö</td>
-                    <td><input type="number"" id="temp"></td>
+                    <td><input type="number"" id="temp" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
             </table>
         </div>
@@ -87,19 +89,22 @@
         <br>
 
         <!--Tulokset ja ohjeet:-->
-        <div class="card" id="content">
-            <h2 id="pisteet"></h2>
-            <br>
-            <h3 id="ohjeotsikko"></h3>
-            <h4 id="ohje1"></h4>
-            <h4 id="ohje2"></h4>
-        </div>
-        <div class="card">
-            <h3 id="potvit"></h3>
-            <br>
+        <div id="content">
+            <div class="card" id="content">
+                <h2 id="pisteet"></h2>
+                <br>
+                <h3 id="ohjeotsikko"></h3>
+                <h4 id="ohje1"></h4>
+                <h4 id="ohje2"></h4>
+            </div>
+            <div class="card">
+                <h3 id="potvit"></h3>
+                <br>
 
+            </div>
         </div>
-    </div>
+        </div>
+        
     
 </body>
 <footer>
