@@ -37,6 +37,15 @@
             align-self: center;
             width: 49.4%;
         }
+        input[type=text], select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
         h3 {
             letter-spacing: 1.5px;
             color: rgba(0, 0, 0, 0.632);
@@ -48,7 +57,7 @@
     <!--Sisältö-->
     <div class="master">
         <div class="card">
-            <button class="nappi" onclick="näytä(); laske(); tulokset(); ohjeet();"><h3>Laske</h3></button>
+            <button class="nappi" onclick="näytä(); laske(); ohjeet();"><h3>Laske</h3></button>
             <button class="nappi" onclick="nollaa();"><h3>Nollaa</h3></button>
         </div>
         <br>
@@ -57,11 +66,11 @@
             <table>
                 <tr>
                     <td>Hengitystaajuus</td>
-                    <td><input type="number"" id="hf" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td><input type="number" id="hf" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
                     <td>Happisaturaatio</td>
-                    <td><input type="number"" id="spo2" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td><input type="number" id="spo2" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
                     <td>Lisähappi käytössä?</td>
@@ -69,19 +78,19 @@
                 </tr>
                 <tr>
                     <td>Verenpaine </td>
-                    <td><input type="number"" id="rrsys" pattern="[0-9]*" inputmode="numeric">/<input type="number" id="rrdia" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td><input type="number" id="rrsys" pattern="[0-9]*" inputmode="numeric">/<input type="number" id="rrdia" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>                
                 <tr>
                     <td>Syke</td>
-                    <td><input type="number"" id="syke" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td><input type="number" id="syke" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
                     <td>Alentunut tajunnantaso?</td>
-                    <td><input type="checkbox" id="taj" pattern="[0-9]*" inputmode="numeric""></td>
+                    <td><input type="checkbox" id="taj" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
                 <tr>
                     <td>Lämpö</td>
-                    <td><input type="number"" id="temp" pattern="[0-9]*" inputmode="numeric"></td>
+                    <td><input type="number" id="temp" pattern="[0-9]*" inputmode="numeric"></td>
                 </tr>
             </table>
         </div>
@@ -97,13 +106,8 @@
                 <h4 id="ohje1"></h4>
                 <h4 id="ohje2"></h4>
             </div>
-            <div class="card">
-                <h3 id="potvit"></h3>
-                <br>
-
-            </div>
         </div>
-        </div>
+    </div>
         
     
 </body>
@@ -246,29 +250,31 @@
             valmis = 1
         }       
 
-        function tulokset() {
-            function range(x, min, max) {
-                return x >= min && x <= max;
-            }
-            if (valmis === 1) {
-                document.getElementById("potvit").innerText = "Vitaalit:"
-                //document.getElementById("AB").innerHTML = "A + B"
-                document.getElementById("hf").innerHTML = "Hengitysfrekvenssi: " + hf + "/min";
-                document.getElementById("spo2").innerHTML = "Happisaturaatio: " + spo2 + " %";
-                document.getElementById("addito2").innerHTML = "Lisähappi käytössä: " + addito2;
-                //document.getElementById("C").innerHTML = "C"
-                if (rrdia !== 0) {
-                    document.getElementById("RR").innerHTML = "Verenpaine: " + rrsys + "/" + rrdia + " mmhg";
-                } else {
-                    document.getElementById("rrsys").innerHTML = "Sys. verenpaine: " + rrsys + " mmHg";
-                }
-                document.getElementById("syke").innerHTML = "Syke: " + syke;
-                //document.getElementById("D").innerHTML = "D"
-                document.getElementById("taj").innerHTML = "Tajunnantaso:" + taj; 
-                //document.getElementById("E").innerHTML = "E"
-                document.getElementById("temp").innerHTML = "Lämpö: " + temp + " °C";
-            }
-        }  
+    /// Ei käytössä tällä hetkellä
+    ///    function tulokset() {
+    ///        function range(x, min, max) {
+    ///            return x >= min && x <= max;
+    ///        }
+    ///        if (valmis === 1) {
+    ///            document.getElementById("potvit").innerText = "Vitaalit:"
+    ///            //document.getElementById("AB").innerHTML = "A + B"
+    ///            document.getElementById("hf").innerHTML = "Hengitysfrekvenssi: " + hf + "/min";
+    ///            document.getElementById("spo2").innerHTML = "Happisaturaatio: " + spo2 + " %";
+    ///            document.getElementById("addito2").innerHTML = "Lisähappi käytössä: " + addito2;
+    ///            //document.getElementById("C").innerHTML = "C"
+    ///            if (rrdia !== 0) {
+    ///                document.getElementById("RR").innerHTML = "Verenpaine: " + rrsys + "/" + rrdia + " mmhg";
+    ///            } else {
+    ///                document.getElementById("rrsys").innerHTML = "Sys. verenpaine: " + rrsys + " mmHg";
+    ///            }
+    ///            document.getElementById("syke").innerHTML = "Syke: " + syke;
+    ///            //document.getElementById("D").innerHTML = "D"
+    ///            document.getElementById("taj").innerHTML = "Tajunnantaso:" + taj; 
+    ///            //document.getElementById("E").innerHTML = "E"
+    ///         document.getElementById("temp").innerHTML = "Lämpö: " + temp + " °C";
+    ///        }
+    ///    } 
+    ///     
         function ohjeet() {
             function range(x, min, max) {
                 return x >= min && x <= max;
