@@ -7,6 +7,7 @@ body {
     letter-spacing: 1.5px;
     color:  rgba(193, 193, 193, 0.664);
     font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0;
 }
 div.card {
     grid-template-columns: minmax(100px, 1fr);
@@ -15,6 +16,7 @@ div.card {
     backdrop-filter: blur(8px);
     background-color: rgba(219, 219, 219, 0.175);
     padding: 3%;
+    margin-top: 0.5%;
 }
 #content {
     display: grid;
